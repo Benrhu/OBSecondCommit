@@ -1,29 +1,20 @@
 package com.example.SpringForumSC.Processes;
 
-import com.sparkpost.Client;
+import com.sparkpost.exception.SparkPostException;
+import com.sparkpost.model.responses.Response;
 
-public class emailSender {
-    String apiKey = "1fa4af9d40fe71086d6d1d7b8b8a1156497f269f";
-    Client client;
+public class emailSender{
 
-    public emailSender(String apiKey, Client client) {
-        this.apiKey = apiKey;
-        this.client = new Client(apiKey);
-    }
+    public emailSender() throws SparkPostException {
 
-    public String getApiKey() {
-        return apiKey;
-    }
+    String from = "benrhu@gmail.com";
+    String to = "rubendiaz300000@gmail.com";
+    String subject = "Email test for SC";
+    String body = "This is a test :)";
+    String html = "<p>greetings :)</p>";
 
-    public void setApiKey(String apiKey) {
-        this.apiKey = apiKey;
-    }
-
-    public Client getClient() {
-        return client;
-    }
-
-    public void setClient(Client client) {
-        this.client = client;
+    SparkpostConfig sp = new SparkpostConfig();
+    Response response = sp.getClient().sendMessage(from, to, subject, body, html);
+    System.out.println(response);
     }
 }
