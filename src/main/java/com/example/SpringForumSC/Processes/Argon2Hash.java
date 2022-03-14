@@ -22,9 +22,7 @@ public class Argon2Hash implements HasheablePass{
     }
 
     @Override
-    public boolean passwordVetification(String hash, String password) {
-        return false;
-    }
+    public boolean passwordVerification(String hash, String password) { return false; }
 
     public Argon2 getArgon2() {
         return argon2;

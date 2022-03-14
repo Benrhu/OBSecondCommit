@@ -4,5 +4,5 @@ public interface HasheablePass {
 
     String passHash(String password);
 
-    boolean passwordVetification(String hash, String password);
+    boolean passwordVerification(String hash, String password);
 }

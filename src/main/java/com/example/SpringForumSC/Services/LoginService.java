@@ -18,7 +18,7 @@ public class LoginService {
     public int Login(String email, String password){
         int resultado = - 1;
         if(this.emailExists(email) != null){
-            if (this.encode.passwordVetification(this.hashed(email), password)){
+            if (this.encode.passwordVerification(this.hashed(email), password)){
                 return 1;
             }
             return -2;
