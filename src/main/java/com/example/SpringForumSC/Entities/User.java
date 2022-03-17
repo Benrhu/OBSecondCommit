@@ -32,4 +32,7 @@ public class User {
     @OneToOne(targetEntity = Course.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "courseId", referencedColumnName = "courseId")
     private Course courseId;
+
+    public User() {
+    }
 }

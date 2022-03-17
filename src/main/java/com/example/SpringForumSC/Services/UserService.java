@@ -41,6 +41,30 @@ public class UserService {
         return false;
     }
 
+    public int Login(String email, String password){
+        int resultado = - 1;
+        if(this.emailExists(email) != null){
+            if (this.encode.passwordVerification(this.hashed(email), password)){
+                return 1;
+            }
+            return -2;
+        }
+        return resultado;
+    }
+
+    // Verify if email already exists
+    public User emailExists(String email){
+        for (User user : this.users){
+            if(user.getEmail().equals(email));
+        }
+        return null;
+    }
+
+    public String hashed(String email){
+        User user = this.emailExists(email);
+        return  user.getPassword();
+    }
+
     // Verifying format
     public boolean vf(String email) {
         Pattern emailPatt = Pattern.compile("^[a-zA-Z0-9_\\-\\.]+@([a-zA-Z0-9]+)(\\.)[a-zA-Z0-9]+$");

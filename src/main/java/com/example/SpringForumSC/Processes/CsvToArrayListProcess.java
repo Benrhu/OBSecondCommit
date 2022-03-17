@@ -16,7 +16,7 @@ import java.util.regex.Pattern;
 public class CsvToArrayListProcess {
 
     private List<User> users;
-    private static String separator = ",";
+    private static String SEPARATOR = ",";
     private List<Errors> errors;
 
     public CsvToArrayListProcess(int lines, List<User> users, String pathFile) {
@@ -30,7 +30,7 @@ public class CsvToArrayListProcess {
             ArrayList<String> users = new ArrayList<>();
             String line = br.readLine();
             while (line != null) {
-                String[] fields = line.split(separator);
+                String[] fields = line.split(SEPARATOR);
                 if (vf(fields)) {
                     if (this.vde(fields[0])) {
                         Errors emailError = new Errors(ErrorType.DUPLICATED_EMAIL);
@@ -117,11 +117,11 @@ public class CsvToArrayListProcess {
     }
 
     public static String getSeparator() {
-        return separator;
+        return SEPARATOR;
     }
 
     public static void setSeparator(String separator) {
-        CsvToArrayListProcess.separator = separator;
+        CsvToArrayListProcess.SEPARATOR = separator;
     }
 
     public List<Errors> getErrors() {
