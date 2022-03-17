@@ -3,21 +3,24 @@ package com.example.SpringForumSC.Services;
 import com.example.SpringForumSC.Entities.User;
 import com.example.SpringForumSC.Processes.HasheablePass;
 import com.example.SpringForumSC.Repositories.UserRepository;
-
-import java.util.ArrayList;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class RegisterService implements UserRepository {
+@Service
+@Data
+@AllArgsConstructor
+public class UserService {
+
+    @Autowired
+    UserRepository userRepository;
 
     private List<User> users;
     private HasheablePass encode;
-
-    public RegisterService(List<User> users, HasheablePass encode){
-        this.encode = encode;
-        this.users = users;
-    }
 
     public boolean register(String email, String password){
         String passHashed;
@@ -61,19 +64,6 @@ public class RegisterService implements UserRepository {
         return false;
     }
 
-    public List<User> getUsers() {
-        return users;
-    }
+    public List<User> findAll(){ return userRepository.findAll(); }
 
-    public void setUsers(List<User> users) {
-        this.users = users;
-    }
-
-    public HasheablePass getEncode() {
-        return encode;
-    }
-
-    public void setEncode(HasheablePass encode) {
-        this.encode = encode;
-    }
 }
