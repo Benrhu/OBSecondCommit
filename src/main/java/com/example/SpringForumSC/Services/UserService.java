@@ -6,6 +6,8 @@ import com.example.SpringForumSC.Repositories.UserRepository;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -20,6 +22,7 @@ public class UserService {
     UserRepository userRepository;
 
     private List<User> users;
+
     private HasheablePass encode;
 
     public boolean register(String email, String password){

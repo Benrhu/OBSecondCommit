@@ -1,11 +1,13 @@
 package com.example.SpringForumSC.Entities;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import javax.persistence.*;
 
 @Entity
 @Data
+@AllArgsConstructor
 @Table(name = "questions")
 public class Questions {
 
@@ -18,9 +20,8 @@ public class Questions {
     @JoinColumn(name = "categoryId", referencedColumnName = "categoryId")
     private Category category;
 
-    @OneToOne(targetEntity = User.class, cascade = CascadeType.ALL)
-    @JoinColumn(name = "userId", referencedColumnName = "userId")
-    private User user;
-
+    @OneToOne(targetEntity = Lessons.class, cascade = CascadeType.ALL)
+    @JoinColumn(name = "lessonsId", referencedColumnName = "lessonsId")
+    private Lessons lessons;
 
 }
