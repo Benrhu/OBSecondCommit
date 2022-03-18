@@ -2,6 +2,7 @@ package com.example.SpringForumSC.Services;
 
 import com.example.SpringForumSC.Entities.User;
 import com.example.SpringForumSC.Processes.HasheablePass;
+import com.example.SpringForumSC.Processes.HasheablePassImpl;
 import com.example.SpringForumSC.Repositories.UserRepository;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -23,7 +24,8 @@ public class UserService {
 
     private List<User> users;
 
-    private HasheablePass encode;
+    @Autowired
+    private HasheablePassImpl encode;
 
     public boolean register(String email, String password){
         String passHashed;
